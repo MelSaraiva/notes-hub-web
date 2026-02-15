@@ -1,73 +1,50 @@
-# React + TypeScript + Vite
+# notes-hub-web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + TypeScript web client for **Notes Hub** — authentication flow and a simple UI for personal notes management.
 
-Currently, two official plugins are available:
+## 📌 Overview
+**notes-hub-web** is the SPA (Single Page Application) for Notes Hub. It provides:
+- Sign up / Sign in screens
+- Protected routes (authenticated area)
+- Notes dashboard (create, list, view, edit, delete)
+- Integration with the Notes Hub API via JWT
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✅ Features (MVP)
+- Register account
+- Login with email or username + password
+- Logout
+- Notes CRUD UI (create, list, view, edit, delete)
+- Basic UX states (loading, empty state, error feedback)
 
-## React Compiler
+## 🧰 Tech Stack
+- React
+- TypeScript
+- Vite
+- npm
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📂 Project Structure (initial)
+- `src/app/` — app setup (routing, auth guard, global config)
+- `src/pages/` — pages (Login, Register, Notes)
+- `src/components/` — reusable UI components
+- `src/services/` — API integration (auth, notes)
+- `src/types/` — shared TypeScript types
 
-## Expanding the ESLint configuration
+## ⚙️ Configuration
+The frontend needs the backend API base URL.
+Recommended: use environment variables (e.g. `.env.local`) and keep local files out of Git.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Typical config:
+- API base URL (e.g. `VITE_API_URL`)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 How to Run (local)
+Prerequisites:
+- Node.js
+- npm
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Steps (high level):
+1. Install dependencies
+2. Start the dev server
+3. Open the local URL shown by Vite
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🔗 Related Repository
+Backend repo: **notes-hub-api**
